@@ -1,0 +1,49 @@
+﻿<Window x:Class="DBManager.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Panel Gościa (Tylko odczyt)" Height="550" Width="800" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Opcje przeglądania" Grid.Row="0" Margin="0,0,0,15" Padding="10">
+            <StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Tabela:" FontWeight="Bold" Width="60"/>
+                    <ComboBox x:Name="cbTables" Width="200" SelectionChanged="CbTables_SelectionChanged"/>
+                </StackPanel>
+
+                <Separator Margin="0,5,0,10"/>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Label Content="Szukaj w kolumnie:" Width="120"/>
+                    <ComboBox x:Name="cbColumns" Width="150" Margin="0,0,10,0"/>
+
+                    <Label Content="Wartość:" />
+                    <TextBox x:Name="txtFilter" Width="150" Margin="0,0,10,0"/>
+
+                    <CheckBox x:Name="chkExactMatch" Content="Dokładne dopasowanie" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                    <Button x:Name="btnClear" Content="Wyczyść filtr" Width="100" Margin="0,0,10,0" Click="BtnClear_Click"/>
+                    <Button x:Name="btnFilter" Content="FILTRUJ" FontWeight="Bold" Width="100" Click="BtnFilter_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+        </GroupBox>
+
+        <DataGrid x:Name="dataGrid" Grid.Row="1" 
+                  AutoGenerateColumns="True" 
+                  IsReadOnly="True" 
+                  Background="WhiteSmoke"/>
+
+        <Button Grid.Row="2" Content="Wyloguj (Powrót)" HorizontalAlignment="Right" Width="120" Height="30" Margin="0,15,0,0" Click="BtnLogout_Click"/>
+    </Grid>
+</Window>

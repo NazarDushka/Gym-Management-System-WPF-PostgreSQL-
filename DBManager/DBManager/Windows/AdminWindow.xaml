@@ -1,0 +1,51 @@
+﻿<Window x:Class="DBManager.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Panel Administratora" Height="600" Width="900" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="0,0,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Wybierz tabelę:" FontWeight="Bold" VerticalAlignment="Center"/>
+                <ComboBox x:Name="cbTables" Width="200" Margin="10,0,0,0" SelectionChanged="CbTables_SelectionChanged"/>
+            </StackPanel>
+
+            <DataGrid x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="True" IsReadOnly="True" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" Background="WhiteSmoke"/>
+        </Grid>
+
+        <StackPanel Grid.Column="1">
+
+            <GroupBox Header="Rekordy (Dane)" Margin="0,0,0,20" Padding="5">
+                <StackPanel>
+                    <Button x:Name="btnRefresh" Content="Odśwież (Refresh)" Margin="0,5" Height="30" Click="BtnRefresh_Click"/>
+                    <Button x:Name="btnAdd" Content="Dodaj nowy..." Margin="0,5" Height="30" Click="BtnAdd_Click"/>
+                    <Button x:Name="btnEdit" Content="Edytuj..." Margin="0,5" Height="30" Click="BtnEdit_Click"/>
+                    <Button x:Name="btnDelete" Content="Usuń rekord" Margin="0,5" Height="30" Background="#FFDDDD" Click="BtnDelete_Click"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Struktura tabeli" Padding="5">
+                <StackPanel>
+                    <Button x:Name="btnAddCol" Content="Dodaj kolumnę" Margin="0,5" Height="30" Click="BtnAddCol_Click"/>
+                    <Button x:Name="btnDelCol" Content="Usuń kolumnę" Margin="0,5" Height="30" Click="BtnDelCol_Click"/>
+                    <Button x:Name="btnRenameCol" Content="Zmień nazwę kolumny" Margin="0,5" Height="30" Click="BtnRenameCol_Click"/>
+                </StackPanel>
+            </GroupBox>
+
+            <Button Content="WYLOGUJ" Margin="0,30,0,0" Height="40" Background="#DDDDDD" Click="BtnLogout_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

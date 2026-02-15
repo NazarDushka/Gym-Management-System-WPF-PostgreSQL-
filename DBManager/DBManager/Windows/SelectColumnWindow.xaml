@@ -1,0 +1,17 @@
+﻿<Window x:Class="DBManager.SelectColumnWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Wybierz kolumnę" Height="200" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid Margin="15">
+        <StackPanel VerticalAlignment="Center">
+            <Label Content="Wybierz kolumnę z listy:"/>
+
+            <ComboBox x:Name="cbColumns" Height="30" Margin="0,0,0,20"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Anuluj" Width="80" Margin="0,0,10,0" Click="BtnCancel_Click"/>
+                <Button Content="OK" Width="80" FontWeight="Bold" Click="BtnOk_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
