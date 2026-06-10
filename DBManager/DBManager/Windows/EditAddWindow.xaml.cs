@@ -155,9 +155,31 @@ namespace DBManager
                     {
                         string text = txt.Text.Trim();
                         if (string.IsNullOrEmpty(text))
+                        {
                             finalValue = DBNull.Value;
+                        }
                         else
-                            finalValue = text;
+                        {
+                            DataTable schema = Functions.GetTable(_tableName);
+                            Type targetType = schema.Columns[colName].DataType;
+
+                            if (targetType != typeof(string))
+                            {
+                                try
+                                {
+                                    finalValue = Convert.ChangeType(text, targetType);
+                                }
+                                catch (FormatException)
+                                {
+                                    MessageBox.Show($"Nieprawidłowy format danych dla pola '{colName}'. Wprowadź poprawną wartość typu {GetFriendlyTypeName(targetType)}.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                finalValue = text;
+                            }
+                        }
                     }
 
                     values.Add(colName, finalValue);
